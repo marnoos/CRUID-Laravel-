@@ -12,11 +12,20 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Nama Produk</label>
-                        <input type="text" name="nama_produk" class="form-control" value="{{ $produk->nama_produk }}" required>
+                        <input type="text" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" value="{{ old('nama_produk') }}">
+
+                        @error('nama_produk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Harga</label>
-                        <input type="number" name="harga" class="form-control" value="{{ $produk->harga }}" required>
+                        <input type="number" name="harga" class="form-control @error('harga') is-invalid @enderror" value="{{ old('harga') }}">
+
+                        @error('harga')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-warning w-100">Update</button>
                 </form>
